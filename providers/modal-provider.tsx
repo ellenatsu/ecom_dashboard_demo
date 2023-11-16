@@ -6,7 +6,7 @@ import { StoreModal } from "@/components/modals/store-modal";
 export const ModalProvider = () => {
   //to avoid hydration error for server and client rendering difference
   const [isMounted, setIsMounted] = useState(false);
-
+ 
   useEffect(() => {
     setIsMounted(true);
   }, []);

@@ -14,12 +14,15 @@ const SetupPage = () => {
     }
   }, [isOpen, onOpen]);
 
-  return (
-    <div className="p-4">
-      This is the root page
-      <UserButton afterSignOutUrl="/" />
-    </div>
-  );
+  return null;
+
+//   return (
+//     <div className="p-4">
+//       This is the root page
+//       <UserButton afterSignOutUrl="/" />
+//       <button onClick={onOpen}>Open Modal</button>
+//     </div>
+//   );
 };
 
 export default SetupPage;
