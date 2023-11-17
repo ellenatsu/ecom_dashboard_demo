@@ -40,7 +40,7 @@ export const StoreModal = () => {
     //TODO: create store
     try {
       setLoading(true);
-      const response = await axios.post("/api/store", values);
+      const response = await axios.post("/api/stores", values);
      
       //refresh and redirect
       window.location.assign(`/${response.data.id}`);
