@@ -103,7 +103,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <div className="space-y-4">
+          <div className="grid grid-cols-3 gap-8">
             <FormField
               control={form.control}
               name="name"
@@ -132,7 +132,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         title="NEXT_PUBLIC_API_URL"
         description={`${origin}/api/stores/${params.storeId}`}
         variant="public"
-      /> 
+      />
     </>
   );
 };
