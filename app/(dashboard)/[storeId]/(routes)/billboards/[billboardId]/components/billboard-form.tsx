@@ -9,7 +9,6 @@ import { useParams, useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Billboard } from "@prisma/client";
-import { useOrigin } from "@/hooks/use-origin";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
@@ -41,7 +40,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -90,11 +88,13 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         `/api/stores/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
-      toast.success("Store deleted.");
+      router.push(`/${params.storeId}/billboards`);
+      toast.success("Billboard deleted.");
     } catch (err) {
       console.log(err);
-      toast.error("Make sure you removed all products and categories first.");
+      toast.error(
+        "Make sure you removed all categories using this billboard first."
+      );
     } finally {
       setLoading(false);
       setOpen(false);
@@ -170,7 +170,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };
