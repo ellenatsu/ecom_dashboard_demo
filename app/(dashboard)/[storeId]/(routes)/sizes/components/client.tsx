@@ -2,29 +2,24 @@
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
-import { CategoryColumn, columns } from "./columns";
+import { SizeColumn, columns } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
-interface CategoryClientProps {
-  data: CategoryColumn[];
+interface SizeClientProps {
+  data: SizeColumn[];
 }
-export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
+export const SizeClient: React.FC<SizeClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
   return (
     <>
       <div className="flex items-center justify-between">
-        <Heading
-          title={`Categorys (${data.length})`}
-          description="Manage Categorys"
-        />
-        <Button
-          onClick={() => router.push(`/${params.storeId}/categories/new`)}
-        >
+        <Heading title={`Sizes (${data.length})`} description="Manage Sizes" />
+        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
           <Plus className="mr-2 w-4 h-4" />
           Add New
         </Button>
@@ -32,9 +27,9 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
       <Separator />
       <DataTable columns={columns} data={data} searchKey="name" />
 
-      <Heading title="API" description="API calls for Categories" />
+      <Heading title="API" description="API calls for Sizes" />
       <Separator />
-      <ApiList entityName="categories" entityIdName="categoryId" />
+      <ApiList entityName="sizes" entityIdName="sizeId" />
     </>
   );
 };
